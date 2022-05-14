@@ -32,6 +32,7 @@ class EmployeeController extends Controller
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
         ]);
+        return json_encode(Employee::orderBy('id', 'desc')->get()->first());
     }
 
     public function update(Request $request, $id)
@@ -54,6 +55,7 @@ class EmployeeController extends Controller
             'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => \Carbon\Carbon::now()->toDateTimeString()
         ]);
+        return json_encode(Employee::where('id', $id)->get()->first());
     }
 
     public function destroy($id)
